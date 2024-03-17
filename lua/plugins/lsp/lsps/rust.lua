@@ -27,6 +27,9 @@ return {
                 procMacro = {
                     enable = true,
                 },
+                files = {
+                    excludeDirs = { ".direnv" },
+                },
             },
         },
     },
