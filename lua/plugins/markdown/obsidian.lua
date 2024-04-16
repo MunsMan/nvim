@@ -12,18 +12,21 @@ return {
         "nvim-lua/plenary.nvim",
     },
     opts = {
-        dir = "/Users/munsman/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain",
-
+        workspaces = {
+            {
+                name = "second-brain",
+                path = "~/obsidian/second-brain",
+            },
+        },
         daily_notes = {
             folder = "daily",
             template = "daily.md",
         },
         completion = {
             nvim_cmp = true,
-            min_chars = 1,
-            new_notes_location = "current_dir",
-            prepend_note_id = true,
+            min_chars = 2,
         },
+        new_notes_location = "current_dir",
         templates = {
             subdir = "templates",
             date_format = "%Y-%m-%d",
@@ -58,29 +61,11 @@ return {
             end
             return out
         end,
+
         follow_url_func = function(url)
-            -- Open the URL in the default web browser.
-            vim.fn.jobstart({ "open", url }) -- Mac OS
-            -- vim.fn.jobstart({"xdg-open", url})  -- linux
+            vim.fn.jobstart({ "open", url })
         end,
     },
-    setup = function(_, opts)
-        require("obsidian").setup(opts)
-        vim.keymap.set("n", "gf", function()
-            if require("obsidian").util.cursor_on_markdown_link() then
-                return "<cmd>ObsidianFollowLink<CR>"
-            else
-                return "gf"
-            end
-        end, { noremap = false, expr = true })
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = { "markdown", "markdown_inline" },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "markdown" },
-            },
-        })
-    end,
     keys = {
         {
             "<leader>nn",
