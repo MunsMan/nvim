@@ -1,5 +1,6 @@
 return {
     "jakewvincent/mkdnflow.nvim",
+    enabled = false,
     lazy = true,
     ft = "markdown",
     dependencies = { "starwing/luautf8" },
