@@ -36,7 +36,6 @@ return {
                 end,
             },
         },
-        mappings = {},
         open_notes_in = "current",
         note_id_func = function(title)
             local suffix = ""
