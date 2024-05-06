@@ -7,6 +7,7 @@ g.markdown_recommended_style = 0
 
 opt.backup = false
 opt.cmdheight = 0
+opt.conceallevel = 2
 opt.cursorline = true
 opt.expandtab = true
 opt.hlsearch = false
