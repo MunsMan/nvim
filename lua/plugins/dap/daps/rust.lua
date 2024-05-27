@@ -1,24 +1,3 @@
-local function initCommands()
-    local rustc_sysroot = vim.fn.trim(vim.fn.system("rustc --print sysroot"))
-
-    local script_import = 'command script import "'
-        .. rustc_sysroot
-        .. '/lib/rustlib/etc/lldb_lookup.py"'
-    local commands_file = rustc_sysroot .. "/lib/rustlib/etc/lldb_commands"
-
-    local commands = {}
-    local file = io.open(commands_file, "r")
-    if file then
-        for line in file:lines() do
-            table.insert(commands, line)
-        end
-        file:close()
-    end
-    table.insert(commands, 1, script_import)
-
-    return commands
-end
-
 local function load_env()
     local variables = {}
     for k, v in pairs(vim.fn.environ()) do
@@ -46,7 +25,6 @@ return {
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
         args = {},
-        initCommands = initCommands,
         env = load_env,
     },
     {
@@ -57,7 +35,6 @@ return {
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
         args = get_args,
-        initCommands = initCommands,
         env = load_env,
     },
 }
