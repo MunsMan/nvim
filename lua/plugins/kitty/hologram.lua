@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "edluffy/hologram.nvim",
     opts = {
         auto_display = true,
