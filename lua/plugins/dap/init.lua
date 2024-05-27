@@ -58,14 +58,14 @@ return {
         map("n", "<leader>di", dap.step_into, { desc = "Step Into" })
         map("n", "<leader>dh", dap.step_into, { desc = "Step Out" })
         map("n", "<leader>dn", dap.step_into, { desc = "Step Over" })
-        map("n", "<leader>dr", dap.restart, { desc = "Step Over" })
+        map("n", "<leader>dr", dap.restart, { desc = "Restart DAP" })
         map("n", "<leader>?", function()
             require("dapui").eval(nil, { enter = true })
         end, { desc = "Step Over" })
         map("n", "<leader>dc", function()
             dap.terminate()
             dap.repl.close()
-        end, { desc = "Step Over" })
+        end, { desc = "Close DAP" })
     end,
     keys = {
         {
