@@ -33,6 +33,7 @@ return {
         { "nvim-telescope/telescope.nvim" },
         { "theHamsta/nvim-dap-virtual-text" },
         { "williamboman/mason.nvim" },
+        { "stevearc/overseer.nvim", config = true },
     },
     config = function()
         local map = require("util").keymap_set
@@ -70,7 +71,7 @@ return {
             function()
                 if vim.fn.filereadable(".vscode/launch.json") then
                     require("dap.ext.vscode").load_launchjs(nil, {
-                        ["codelldb"] = { "c", "cpp" },
+                        ["codelldb"] = { "c", "cpp", "rust" },
                     })
                 end
                 require("dap").continue()
