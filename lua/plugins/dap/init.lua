@@ -68,6 +68,11 @@ return {
         {
             "<leader>ds",
             function()
+                if vim.fn.filereadable(".vscode/launch.json") then
+                    require("dap.ext.vscode").load_launchjs(nil, {
+                        ["codelldb"] = { "c", "cpp" },
+                    })
+                end
                 require("dap").continue()
                 -- require("dapui").open()
             end,
