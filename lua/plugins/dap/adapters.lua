@@ -1,8 +1,16 @@
+local mason_registry = require("mason-registry")
+
+local codelldb = mason_registry.get_package("codelldb")
+
 local adapters = {
-    lldb = {
-        type = "executable",
-        command = "/usr/local/opt/llvm/bin/lldb-vscode", -- adjust as needed, must be absolute path
-        name = "lldb",
+    codelldb = {
+        name = "codelldb",
+        type = "server",
+        port = "${port}",
+        executable = {
+            command = codelldb:get_install_path() .. "/extension/adapter/codelldb",
+            args = { "--port", "${port}" },
+        },
     },
 }
 

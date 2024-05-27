@@ -32,8 +32,10 @@ return {
         },
         { "nvim-telescope/telescope.nvim" },
         { "theHamsta/nvim-dap-virtual-text" },
+        { "williamboman/mason.nvim" },
     },
     config = function()
+        local map = require("util").keymap_set
         local Config = require("config.config")
         local dap = require("dap")
         local adapters = require("plugins.dap.adapters")
@@ -51,10 +53,20 @@ return {
 
         dap.adapters = adapters
         dap.configurations = confiurations
+        map("n", "<leader>dp", dap.pause, { desc = "Pause Debugger" })
+        map("n", "<leader>di", dap.step_into, { desc = "Step Into" })
+        map("n", "<leader>dh", dap.step_into, { desc = "Step Out" })
+        map("n", "<leader>dn", dap.step_into, { desc = "Step Over" })
+        map("n", "<leader>dr", dap.restart, { desc = "Step Over" })
+        map("n", "<leader>?", require("dapui").eval(nil, { enter = true }), { desc = "Step Over" })
+        map("n", "<leader>dc", function()
+            dap.terminate()
+            dap.repl.close()
+        end, { desc = "Step Over" })
     end,
     keys = {
         {
-            "<leader>dr",
+            "<leader>ds",
             function()
                 require("dap").continue()
                 -- require("dapui").open()
@@ -62,35 +74,7 @@ return {
             desc = "Start Debugger",
         },
         {
-            "<leader>dp",
-            function()
-                require("dap").pause()
-            end,
-            desc = "Pause Debugger",
-        },
-        {
-            "<leader>di",
-            function()
-                require("dap").step_into()
-            end,
-            desc = "step into - DAP",
-        },
-        {
-            "<leader>dh",
-            function()
-                require("dap").step_out()
-            end,
-            desc = "step out - DAP",
-        },
-        {
-            "<leader>dn",
-            function()
-                require("dap").step_over()
-            end,
-            desc = "step over - DAP",
-        },
-        {
-            "<leader>db",
+            "<leader>b",
             function()
                 require("dap").toggle_breakpoint()
             end,
@@ -104,16 +88,6 @@ return {
                 telescope.extensions.dap.commands({})
             end,
             desc = "Search DAP Options",
-        },
-        {
-            "<leader>dc",
-            function()
-                local dap = require("dap")
-                -- require("dapui").close()
-                dap.terminate()
-                dap.repl.close()
-            end,
-            desc = "close DAP",
         },
     },
 }
