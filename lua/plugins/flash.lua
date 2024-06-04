@@ -3,6 +3,9 @@ return {
     event = "VeryLazy",
     opts = {
         modes = {
+            search = {
+                enabled = true,
+            },
             char = {
                 keys = {
                     ["f"] = "t",
@@ -20,6 +23,11 @@ return {
                 end,
                 jump_labels = true,
             },
+        },
+        search = {
+            multi_window = true,
+            wrap = true,
+            mode = "fuzzy",
         },
         jump = {
             nohlsearch = true,
