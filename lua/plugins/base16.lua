@@ -12,37 +12,43 @@ local function parse_yaml_file(file_path)
 end
 
 return {
-    "echasnovski/mini.nvim",
+    "echasnovski/mini.base16",
     version = "*",
     dependenciens = {
-        "cuducos/yaml.nvim",
-        ft = { "yaml" },
-        requires = { "nvim-treesitter/nvim-treesitter" },
+        {
+            "cuducos/yaml.nvim",
+            ft = { "yaml" },
+            requires = { "nvim-treesitter/nvim-treesitter" },
+        },
+        {
+            { "echasnovski/mini.colors", version = "*" },
+        },
     },
     setup = function()
         -- Load the yaml.nvim plugin
         -- Example usage
-        local base16 = require("base16")
-        local colors = parse_yaml_file("~/.config/colors/onedark.yaml")
-        if colors then
+        local base16 = require("mini.base16")
+        local colors = require("mini.colors")
+        local base16_colors = parse_yaml_file("~/.config/colors/onedark.yaml")
+        if base16_colors then
             base16.setup({
                 palette = {
-                    base00 = "#" .. colors.base00,
-                    base01 = "#" .. colors.base01,
-                    base02 = "#" .. colors.base02,
-                    base03 = "#" .. colors.base03,
-                    base04 = "#" .. colors.base04,
-                    base05 = "#" .. colors.base05,
-                    base06 = "#" .. colors.base06,
-                    base07 = "#" .. colors.base07,
-                    base08 = "#" .. colors.base08,
-                    base09 = "#" .. colors.base09,
-                    base0A = "#" .. colors.base0A,
-                    base0B = "#" .. colors.base0B,
-                    base0C = "#" .. colors.base0C,
-                    base0D = "#" .. colors.base0D,
-                    base0E = "#" .. colors.base0E,
-                    base0F = "#" .. colors.base0F,
+                    base00 = "#" .. base16_colors.base00,
+                    base01 = "#" .. base16_colors.base01,
+                    base02 = "#" .. base16_colors.base02,
+                    base03 = "#" .. base16_colors.base03,
+                    base04 = "#" .. base16_colors.base04,
+                    base05 = "#" .. base16_colors.base05,
+                    base06 = "#" .. base16_colors.base06,
+                    base07 = "#" .. base16_colors.base07,
+                    base08 = "#" .. base16_colors.base08,
+                    base09 = "#" .. base16_colors.base09,
+                    base0A = "#" .. base16_colors.base0A,
+                    base0B = "#" .. base16_colors.base0B,
+                    base0C = "#" .. base16_colors.base0C,
+                    base0D = "#" .. base16_colors.base0D,
+                    base0E = "#" .. base16_colors.base0E,
+                    base0F = "#" .. base16_colors.base0F,
                 },
                 use_cterm = {
                     base00 = 254,
