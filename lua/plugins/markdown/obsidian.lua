@@ -3,11 +3,9 @@ return {
     -- dir = '/Users/munsman/Code/obsidian.nvim/worktree/dailyTemplate/',
     -- name = 'obsidian.nvim',
     -- docs: https://github.com/epwalsh/obsidian.nvim
+    version = "*",
     lazy = true,
-    event = {
-        "BufReadPre **/obsidian/second-brain/**.md",
-        "BufNewFile **/obsidian/second-brain/**.md",
-    },
+    ft = "markdown",
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
@@ -16,6 +14,22 @@ return {
             {
                 name = "second-brain",
                 path = "~/obsidian/second-brain",
+            },
+            {
+                name = "no-vault",
+                path = function()
+                    -- alternatively use the CWD:
+                    -- return assert(vim.fn.getcwd())
+                    return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+                end,
+                overrides = {
+                    notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
+                    new_notes_location = "current_dir",
+                    templates = {
+                        folder = vim.NIL,
+                    },
+                    disable_frontmatter = true,
+                },
             },
         },
         daily_notes = {
@@ -64,6 +78,9 @@ return {
         follow_url_func = function(url)
             vim.fn.jobstart({ "open", url })
         end,
+        ui = {
+            hl_groups = {},
+        },
     },
     keys = {
         {
