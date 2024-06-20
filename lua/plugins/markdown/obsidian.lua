@@ -86,7 +86,7 @@ return {
                 ObsidianTilde = { bold = true, fg = "#ff5370" },
                 ObsidianImportant = { bold = true, fg = "#d73128" },
                 ObsidianBullet = { bold = true, fg = "#89ddff" },
-                -- ObsidianRefText = { underline = true, fg = "#c792ea" },
+                ObsidianRefText = { fg = "#c792ea" },
                 ObsidianExtLinkIcon = { fg = "#c792ea" },
                 ObsidianTag = { italic = true, fg = "#89ddff" },
                 ObsidianBlockID = { italic = true, fg = "#89ddff" },
