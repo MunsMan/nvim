@@ -4,7 +4,7 @@ vim.keymap.set({ "n", "v" }, "e", "k")
 vim.keymap.set({ "n", "v" }, "i", "l")
 vim.keymap.set({ "n", "v" }, "h", "h")
 
-vim.keymap.set("c", "<C-e>", "<C-p>", { noremap = true, silent = true })
+vim.cmd("cnoremap <c-k> <c-p>")
 
 vim.keymap.set("n", "m", "i")
 vim.keymap.set("n", "M", "I")
