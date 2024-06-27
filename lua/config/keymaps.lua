@@ -4,6 +4,8 @@ vim.keymap.set({ "n", "v" }, "e", "k")
 vim.keymap.set({ "n", "v" }, "i", "l")
 vim.keymap.set({ "n", "v" }, "h", "h")
 
+vim.keymap.set({ "n", "v" }, "<C-e>", "<C-p>")
+
 vim.keymap.set("n", "m", "i")
 vim.keymap.set("n", "M", "I")
 vim.keymap.set("n", "l", "o")
