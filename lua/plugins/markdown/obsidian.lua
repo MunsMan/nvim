@@ -24,6 +24,7 @@ return {
                 end,
                 overrides = {
                     notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
+                    daily_notes = vim.NIL,
                     new_notes_location = "current_dir",
                     templates = {
                         folder = vim.NIL,
@@ -38,9 +39,9 @@ return {
         },
         completion = {
             nvim_cmp = true,
-            min_chars = 2,
+            min_chars = 1,
         },
-        new_notes_location = "current_dir",
+        new_notes_location = "notes_subdir",
         templates = {
             subdir = "templates",
             date_format = "%Y-%m-%d",
@@ -50,18 +51,6 @@ return {
                 end,
             },
         },
-        open_notes_in = "current",
-        note_id_func = function(title)
-            local suffix = ""
-            if title ~= nil then
-                suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-            else
-                for _ = 1, 4 do
-                    suffix = suffix .. string.char(math.random(65, 90))
-                end
-            end
-            return tostring(os.date("%Y%m%d%M")) .. "-" .. suffix
-        end,
         note_frontmatter_func = function(note)
             local out = { id = note.id, aliases = note.aliases, tags = note.tags, date = note.date }
             if
@@ -75,9 +64,6 @@ return {
             return out
         end,
 
-        follow_url_func = function(url)
-            vim.fn.jobstart({ "open", url })
-        end,
         ui = {
             hl_groups = {
                 ObsidianTodo = { bold = true, fg = "#f78c6c" },
