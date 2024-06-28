@@ -64,6 +64,9 @@ return {
             return out
         end,
 
+        follow_url_func = function(url)
+            vim.fn.jobstart({ "open", url })
+        end,
         ui = {
             hl_groups = {
                 ObsidianTodo = { bold = true, fg = "#f78c6c" },
