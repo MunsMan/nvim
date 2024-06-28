@@ -24,7 +24,7 @@ return {
         },
         -- Customise UI. The below options are the default
         ui = {
-            border = "rounded",
+            border = "none",
             height = 1,
             width = 1,
             x = 0.5,
@@ -32,26 +32,35 @@ return {
         },
     },
     keys = {
-        -- Make sure to change these keybindings to your preference,
-        -- and remove the ones you won't use
         {
             "<leader>e",
-            ":Tfm<CR>",
+            function()
+                require("tfm").open()
+            end,
             desc = "TFM",
         },
         {
             "<leader>mh",
-            ":TfmSplit<CR>",
+            function()
+                local tfm = require("tfm")
+                tfm.open(nil, tfm.OPEN_MODE.split)
+            end,
             desc = "TFM - horizontal split",
         },
         {
             "<leader>mv",
-            ":TfmVsplit<CR>",
+            function()
+                local tfm = require("tfm")
+                tfm.open(nil, tfm.OPEN_MODE.vsplit)
+            end,
             desc = "TFM - vertical split",
         },
         {
             "<leader>mt",
-            ":TfmTabedit<CR>",
+            function()
+                local tfm = require("tfm")
+                tfm.open(nil, tfm.OPEN_MODE.tabedit)
+            end,
             desc = "TFM - new tab",
         },
     },
