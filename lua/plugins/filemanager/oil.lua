@@ -21,6 +21,7 @@ return {
             },
             border = "rounded",
         },
+        preview_split = "left",
         preview = {
             width = 0.4,
         },
