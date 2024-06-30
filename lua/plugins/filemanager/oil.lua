@@ -25,10 +25,6 @@ return {
         preview = {
             width = 0.4,
         },
-        keymaps = {
-            ["<C-n>"] = "actions.select_split",
-            ["<C-i>"] = "actions.select_vsplit",
-        },
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
