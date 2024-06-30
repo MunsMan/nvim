@@ -10,6 +10,8 @@ return {
             -- "size",
             -- "mtime",
         },
+        experimental_watch_for_changes = true,
+        delete_to_trash = true,
         skip_confirm_for_simple_edits = true,
         view_options = {
             show_hidden = true,
@@ -21,9 +23,10 @@ return {
             },
             border = "rounded",
         },
-        preview_split = "left",
+        preview_split = "right",
         preview = {
             width = 0.4,
+            update_on_cursor_moved = true,
         },
     },
     -- Optional dependencies
