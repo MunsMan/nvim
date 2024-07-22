@@ -27,7 +27,7 @@ end
 
 return {
     setup = function(opts)
-        setup_default(opts)
+        -- setup_default(opts)
         local configDir = "plugins.lsp.lsps."
         local files = vim.split(vim.fn.glob("~/.config/nvim/lua/plugins/lsp/lsps/*.lua"), "\n")
         for _, b in pairs(files) do
