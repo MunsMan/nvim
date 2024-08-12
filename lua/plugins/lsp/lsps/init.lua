@@ -29,7 +29,7 @@ return {
     setup = function(opts)
         -- setup_default(opts)
         local configDir = "plugins.lsp.lsps."
-        local files = vim.split(vim.fn.glob("~/.config/nvim/lua/plugins/lsp/lsps/*.lua"), "\n")
+        local files = vim.split(vim.fn.glob("~/.config/*/lua/plugins/lsp/lsps/*.lua"), "\n")
         for _, b in pairs(files) do
             for w in string.gmatch(b, "[^/]+%.lua") do
                 local configName, _ = w:gsub("%.lua$", "")
