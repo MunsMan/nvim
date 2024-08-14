@@ -13,7 +13,7 @@ return {
         workspaces = {
             {
                 name = "second-brain",
-                path = "~/obsidian/second-brain",
+                path = "~/second-brain",
             },
             {
                 name = "no-vault",
@@ -65,7 +65,14 @@ return {
         end,
 
         follow_url_func = function(url)
-            vim.fn.jobstart({ "open", url })
+            local os = vim.loop.os_uname().sysname
+            if os == "Darwin" then
+                vim.fn.jobstart({ "open", url })
+            elseif os == "Linux" then
+                vim.fn.jobstart({ "xdg-open", url })
+            else
+                print("Unsupported on this OS")
+            end
         end,
         ui = {
             hl_groups = {
