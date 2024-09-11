@@ -8,12 +8,12 @@ return {
             },
             char = {
                 keys = {
-                    ["f"] = "t",
-                    ["t"] = "T",
-                    ["F"] = "<leader>t",
-                    ["T"] = "<leader>T",
-                    [";"] = "I",
-                    [","] = "H",
+                    ["f"] = "s",
+                    ["t"] = "t",
+                    ["F"] = "S",
+                    ["T"] = "T",
+                    [";"] = "N",
+                    [","] = "E",
                 },
                 char_actions = function()
                     return {
@@ -24,14 +24,24 @@ return {
                 jump_labels = true,
             },
         },
-        search = {
-            multi_window = true,
-            wrap = true,
-            mode = "fuzzy",
-        },
+        -- search = {
+        --     multi_window = true,
+        --     wrap = true,
+        --     mode = "fuzzy",
+        -- },
         jump = {
             nohlsearch = true,
             autojump = true,
+        },
+    },
+    keys = {
+        {
+            "<leader>cf",
+            function()
+                require("flash").toggle()
+            end,
+            desc = "Toggle Flash in regular search",
+            mode = "n",
         },
     },
 }

@@ -10,6 +10,8 @@ vim.keymap.set("n", "m", "i")
 vim.keymap.set("n", "M", "I")
 vim.keymap.set("n", "l", "o")
 vim.keymap.set("n", "L", "O")
+vim.keymap.set({"n", "v"}, "s", "f", { desc = "jump forward" })
+vim.keymap.set({"n", "v"}, "S", "F", { desc = "jump forward" })
 vim.keymap.set({ "n", "v" }, "f", "e", { desc = "jump to end of Word" })
 vim.keymap.set({ "n", "v" }, "F", "E", { desc = "jump to end of String" })
 
