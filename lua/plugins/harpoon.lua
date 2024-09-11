@@ -9,14 +9,47 @@ return {
     keys = {
         {
             "<leader>s",
-            function() require("harpoon.mark").add_file() end,
-            desc = 'Mark as Harpoon Target',
-            mode = "n"
+            function()
+                require("harpoon.mark").add_file()
+            end,
+            desc = "Mark as Harpoon Target",
+            mode = "n",
         },
-        { "<leader>h", function() require("harpoon.ui").toggle_quick_menu() end, desc = 'open harpoon menu', mode = "n" },
-        { "<c-t>",     function() require("harpoon.ui").nav_file(1) end,         mode = "n" },
-        { "<c-s>",     function() require("harpoon.ui").nav_file(2) end,         mode = "n" },
-        { "<c-g>",     function() require("harpoon.ui").nav_file(4) end,         mode = "n" },
-        { "<C-p>",     function() require("harpoon.ui").nav_file(3) end,         mode = "n" }
-    }
+        {
+            "<leader>h",
+            function()
+                require("harpoon.ui").toggle_quick_menu()
+            end,
+            desc = "open harpoon menu",
+            mode = "n",
+        },
+        {
+            "<c-t>",
+            function()
+                require("harpoon.ui").nav_file(1)
+            end,
+            mode = "n",
+        },
+        {
+            "<c-s>",
+            function()
+                require("harpoon.ui").nav_file(2)
+            end,
+            mode = "n",
+        },
+        {
+            "<c-g>",
+            function()
+                require("harpoon.ui").nav_file(4)
+            end,
+            mode = "n",
+        },
+        {
+            "<C-p>",
+            function()
+                require("harpoon.ui").nav_file(3)
+            end,
+            mode = "n",
+        },
+    },
 }
